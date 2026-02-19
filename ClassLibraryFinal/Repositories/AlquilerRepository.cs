@@ -49,6 +49,7 @@ namespace ClassLibraryFinal.Repositories
             using (var context = new AplicationDbContext())
             {
                 var reporte = context.alquiler
+                    .Include(a => a.Pelicula) // Traer la relación
                     .Where(a => a.FechaAlquiler.Date == fecha.Date)
                     .GroupBy(a => a.Pelicula.Genero)
                     .Select(g => new
@@ -57,6 +58,7 @@ namespace ClassLibraryFinal.Repositories
                         CantidadAlquileres = g.Count()
                     })
                     .ToList();
+
                 if (reporte.Count > 0)
                 {
                     Console.WriteLine($"Reporte de alquileres por género para la fecha {fecha.ToShortDateString()}:");
