@@ -10,7 +10,9 @@ namespace ClassLibraryFinal.Data
 {
     public class AplicationDbContext : DbContext
     {
-        public DbSet<Class1> Class1s { get; set; }
+        public DbSet<Cliente> cliente { get; set; }
+        public DbSet<Pelicula> pelicula { get; set; }
+        public DbSet<Alquiler> alquiler { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
