@@ -1,10 +1,11 @@
-﻿using System;
+﻿using ClassLibraryFinal.Data;
+using ClassLibraryFinal.Models;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ClassLibraryFinal.Data;
-using ClassLibraryFinal.Models;
 
 namespace ClassLibraryFinal.Repositories
 {
@@ -23,13 +24,18 @@ namespace ClassLibraryFinal.Repositories
         {
             using (var context = new AplicationDbContext())
             {
-                var alquileres = context.alquiler.Where(a => a.FechaAlquiler.Date == fecha.Date).ToList();
+                var alquileres = context.alquiler
+                    .Include(a => a.Cliente)
+                    .Include(a => a.Pelicula)
+                    .Where(a => a.FechaAlquiler.Date == fecha.Date)
+                    .ToList();
+
                 if (alquileres.Count > 0)
                 {
                     Console.WriteLine($"Alquileres para la fecha {fecha.ToShortDateString()}:");
                     foreach (var alquiler in alquileres)
                     {
-                        Console.WriteLine($"- Alquiler ID: {alquiler.Id}, Cliente: {alquiler.Cliente}, Película: {alquiler.Pelicula}, Fecha: {alquiler.FechaAlquiler}");
+                        Console.WriteLine($"- Alquiler ID: {alquiler.Id}, Cliente: {alquiler.Cliente.Nombre}, Película: {alquiler.Pelicula.Titulo}, Fecha: {alquiler.FechaAlquiler}");
                     }
                 }
                 else

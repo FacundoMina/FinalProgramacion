@@ -5,9 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using ClassLibraryFinal.Data;
 using ClassLibraryFinal.Models;
-{
-    
-}
 
 namespace ClassLibraryFinal.Repositories
 {

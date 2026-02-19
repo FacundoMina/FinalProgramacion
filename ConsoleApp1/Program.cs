@@ -19,6 +19,7 @@ do
     Console.WriteLine();
     Console.Write("Seleccione una opcion: ");
     string opcion = Console.ReadLine();
+    Console.Clear();
 
     if (opcion == "1")
     {
