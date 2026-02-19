@@ -12,9 +12,7 @@ namespace ClassLibraryFinal.Models
         public int ClienteId { get; set; }
         public int PeliculaId { get; set; }
         public DateTime FechaAlquiler { get; set; }
-        public Pelicula Pelicula { get; set; }
-
-        public Cliente Cliente { get; set; }
+        
 
 
 
