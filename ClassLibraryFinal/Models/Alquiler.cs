@@ -13,6 +13,8 @@ namespace ClassLibraryFinal.Models
         public int PeliculaId { get; set; }
         public DateTime FechaAlquiler { get; set; }
         
+        public virtual Cliente Cliente { get; set; }
+        public virtual Pelicula Pelicula { get; set; }
 
 
 
